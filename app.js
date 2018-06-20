@@ -8,7 +8,7 @@ import onerror from 'koa-onerror'
 import resource from 'koa-static'
 import path from 'path'
 import Router from 'koa-router'
-const router = Router()
+import routes from './routes'
 let app = new Koa()
 
 onerror(app)
@@ -29,8 +29,8 @@ app
 		const ms = new Date() - start
 		console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 	})
-router.use('/',index.routes())
-app.on('error', (error, ctx) => {
+	.use(routes.routes(), routes.allowedMethods())
+	.on('error', (error, ctx) => {
 		console.log('奇怪的错误' + JSON.stringify(ctx.onerror))
 		console.log('server error:' + error)
 	})
