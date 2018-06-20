@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 const router = Router()
 
-router.post('/login', async(ctx,next) =>{
+router.post('/login', async(ctx,next) => {
   ctx.body = {
     test: "test1111111"
   }
