@@ -16,7 +16,7 @@ const signToken = (user) => {
   }, config.secret, {
     expiresIn: config.timeout
   })
-
+  console.log(11111)
   return {
     token,
     expiresIn: config.timeout

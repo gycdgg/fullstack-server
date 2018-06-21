@@ -11,7 +11,7 @@ router.post('/login', async(ctx,next) =>{
  */
 router.get('/session',async(ctx,next) => {
   ctx.body = {
-    text:"welcome"
+    text: "welcome"
   }
 })
 
