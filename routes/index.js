@@ -7,13 +7,10 @@ const router = Router()
  * varify token while call admin api
  * @Todo virify token
  */
-router.use('/api/admin',async(ctx,next) => {
-  console.log(ctx,1111)
-  ctx.status = 403
-  ctx.body = {text:'forbidden'}
+router.use('/api/admin', async (ctx, next) => {
   await next()
-},admin.routes())
+}, admin.routes())
 
-router.use('/api/client',client.routes())
+router.use('/api/client', client.routes())
 
 export default router

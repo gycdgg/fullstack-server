@@ -1,17 +1,36 @@
 import Router from 'koa-router'
+import multiparty from 'koa2-multiparty'
+import path from 'path'
+import fs from 'fs'
 const router = Router()
 
-router.post('/login', async(ctx,next) => {
+router.post('/login', async (ctx) => {
   ctx.body = {
-    test: "test1111111"
+    test: 'test1111111'
   }
 })
 /**
  * check login status and get user info
  */
-router.get('/session',async(ctx,next) => {
+router.get('/session', async (ctx) => {
+  console.log(ctx.headers, '1111111111111111111')
   ctx.body = {
-    text:"welcome"
+    text: 'welcome'
+  }
+})
+
+router.post('/imgs', multiparty(), async (ctx) => {
+  try{
+
+    let filename = ctx.req.files.file.originalFilename || path.basename(ctx.req.files.file.path)
+    let targetPath = `./static/uploads/${filename}`
+    await fs.createReadStream(ctx.req.files.file.path).pipe(fs.createWriteStream(targetPath))
+    console.log('111111', ctx.req.files, ctx.req)
+    ctx.body = {
+      url: `http://${ctx.headers.host}/static/uploads/${filename}`
+    }
+  }catch(error) {
+    console.log('error', error)
   }
 })
 
