@@ -36,6 +36,7 @@
     "babel-plugin-transform-es2015-spread": "^6.3.14",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "babel-polyfill": "^6.3.14",
+    "eslint": "^5.0.0",
     "jsonwebtoken": "^8.1.1",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",
