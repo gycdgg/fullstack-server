@@ -27,7 +27,7 @@ router.post('/imgs', multiparty(), async (ctx) => {
     await fs.createReadStream(ctx.req.files.file.path).pipe(fs.createWriteStream(targetPath))
     console.log('post img api', ctx.req.files, ctx.headers,ctx.req)
     ctx.body = {
-      url: `http://${ctx.headers.host}/static/uploads/${filename}`
+      url: `http://${ctx.headers.origin}/static/uploads/${filename}`
     }
   }catch(error) {
     console.log('error', error)
