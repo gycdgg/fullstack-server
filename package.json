@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon bin/run",
     "database": "babel-node init-mysql",
-    "pm2": "pm2 start bin/run "
+    "pm2": "pm2 start bin/run --node-args='harmony' "
   },
   "author": "Edmond Guan",
   "license": "ISC",
