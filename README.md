@@ -11,3 +11,5 @@ This is backend
 2. 前后端连调
 3. nginx转发
 ### 再完成商品详情
+
+### 明天完成static实现

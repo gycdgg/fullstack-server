@@ -13,7 +13,6 @@ router.post('/login', async (ctx) => {
  * check login status and get user info
  */
 router.get('/session', async (ctx) => {
-  console.log(ctx.headers, '1111111111111111111')
   ctx.body = {
     text: 'welcome'
   }
@@ -27,7 +26,7 @@ router.post('/imgs', multiparty(), async (ctx) => {
     await fs.createReadStream(ctx.req.files.file.path).pipe(fs.createWriteStream(targetPath))
     console.log('post img api', ctx.req.files, ctx.headers,ctx.req)
     ctx.body = {
-      url: `http://${ctx.headers.origin}/static/uploads/${filename}`
+      url: `${ctx.headers.origin}/static/uploads/${filename}`
     }
   }catch(error) {
     console.log('error', error)
