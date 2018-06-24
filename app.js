@@ -14,9 +14,9 @@ let app = new Koa()
 onerror(app)
 
 app.proxy = true
-
+console.log('11111',path.join(__dirname,'./static'))
 app
-  .use(resource(path.join(__dirname)))
+  .use(resource(path.join(__dirname, './static/uploads')))
   .use(convert(cors()))
   .use(convert(logger()))
   .use(bodyParser())
