@@ -5,18 +5,23 @@ import logger from 'koa-logger'
 import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
 import onerror from 'koa-onerror'
-import resource from 'koa-static'
+import send from 'koa-send'
 import path from 'path'
-// import Router from 'koa-router'
 import routes from './routes'
 let app = new Koa()
 
 onerror(app)
 
 app.proxy = true
-console.log('11111',path.join(__dirname,'./static'))
+
 app
-  .use(resource(path.join(__dirname, './static/uploads')))
+  .use(async (ctx, next) => {
+    if(ctx.path.startsWith('/static')) {
+      let rest = ctx.path.replace('/static', '')
+      await send(ctx, rest, { root: path.join(__dirname, './static') })
+    }
+    await next()
+  })
   .use(convert(cors()))
   .use(convert(logger()))
   .use(bodyParser())
