@@ -36,6 +36,8 @@
     "babel-plugin-transform-es2015-spread": "^6.3.14",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "babel-polyfill": "^6.3.14",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.0.0",
     "jsonwebtoken": "^8.1.1",
     "koa-send": "^5.0.0",
