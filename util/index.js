@@ -35,7 +35,11 @@ const verifyToken = async (ctx) => {
     return jwt.verify(user_id, config.secret)
   }
 }
-
+/**
+ * normalize response
+ * @param {function} fn
+ * @return {function} asnyc
+ */
 createMiddleWare = (fn) => async (ctx, next) => {
   if(!(ctx.session && ctx.session.user && ctx.session.user.id)) {
     ctx.status = 404
