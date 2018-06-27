@@ -3,13 +3,13 @@ import Router from 'koa-router'
 // const home = new Home()
 const router = Router()
 
-router.post('/login', async (ctx, next) => {
+router.post('/login', async (ctx) => {
   ctx.body = {
     test: 'test1111111'
   }
 })
 /**
- * get homepage resourse
+ * check login status and get user info
  */
 // router.get('/home', home.test)
 
