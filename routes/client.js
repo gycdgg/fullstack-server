@@ -1,13 +1,9 @@
 import Router from 'koa-router'
-
-// const home = new Home()
+import { normalizeResponse } from '../middleware/index'
+import home from '../controller/home'
 const router = Router()
 
-router.post('/login', async (ctx) => {
-  ctx.body = {
-    test: 'test1111111'
-  }
-})
+router.get('/home', home._get)
 /**
  * check login status and get user info
  */

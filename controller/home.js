@@ -1,5 +1,5 @@
-export default class Home {
-  async _get() {
+class Home {
+  async _get(ctx) {
     ctx.status = 200
     ctx.body = {
       message: 'get home page data',
@@ -31,3 +31,5 @@ export default class Home {
     }
   }
 }
+
+export default new Home()
