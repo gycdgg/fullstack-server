@@ -11,6 +11,9 @@ router.use('/api/admin', async (ctx, next) => {
   await next()
 }, admin.routes())
 
+/**
+ * client api entry
+ */
 router.use('/api/client', client.routes())
 
 export default router

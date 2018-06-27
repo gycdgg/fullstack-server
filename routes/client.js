@@ -1,7 +1,6 @@
 import Router from 'koa-router'
-import Home from './home'
 
-const home = new Home()
+// const home = new Home()
 const router = Router()
 
 router.post('/login', async (ctx, next) => {
@@ -12,6 +11,6 @@ router.post('/login', async (ctx, next) => {
 /**
  * get homepage resourse
  */
-router.get('/home', home.get)
+// router.get('/home', home.test)
 
 export default router
