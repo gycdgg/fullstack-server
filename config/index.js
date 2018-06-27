@@ -12,4 +12,4 @@ const databaseInfo = {
   }
 }
 
-export default { databaseInfo }
+export { databaseInfo }
