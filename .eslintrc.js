@@ -21,6 +21,7 @@ module.exports = {
     "sourceType": "module"
   },
   "rules": {
+    "no-console": "off",
     "arrow-spacing": 2, // 强制箭头函数的箭头前后使用一致的空格
     "no-var":2, //禁止var
     'comma-spacing': [ 'error', { before: false, after: true }],
