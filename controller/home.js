@@ -1,8 +1,9 @@
 class Home {
   async _get(ctx) {
+    
     ctx.status = 200
     ctx.body = {
-      message: 'get home page data',
+      message: 'Success',
       data: 'home page content'
     }
   }

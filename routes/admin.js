@@ -2,21 +2,15 @@ import Router from 'koa-router'
 import multiparty from 'koa2-multiparty'
 import path from 'path'
 import fs from 'fs'
+import { normalizeResponse } from '../middleware'
+import userController from '../controller/user'
 const router = Router()
 
-router.post('/login', async (ctx) => {
-  ctx.body = {
-    test: 'test1111111'
-  }
-})
+router.post('/login', userController.post)
 /**
  * check login status and get user info
  */
-router.get('/session', async (ctx) => {
-  ctx.body = {
-    text: 'welcome'
-  }
-})
+router.get('/session', normalizeResponse(userController._get))
 
 router.post('/imgs', multiparty(), async (ctx) => {
   try{

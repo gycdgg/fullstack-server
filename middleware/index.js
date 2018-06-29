@@ -1,14 +1,14 @@
+import { verifyToken } from '../util'
 /**
  * normalize response
  * for admin api, should be authed
- * @todo varify token first
  * @param {function} fn
  * @return {function} asnyc
  */
 const normalizeResponse = (fn) => async (ctx, next) => {
   if(ctx.path.includes('/admin')) {
-    if(!(ctx.session && ctx.session.user && ctx.session.user.id)) {
-      ctx.status = 404
+    if(!(ctx.session && ctx.session.id)) {
+      ctx.status = 403
       ctx.body = {
         name: 'unauthortized',
         message: 'user or client unauthortized'
@@ -27,4 +27,24 @@ const normalizeResponse = (fn) => async (ctx, next) => {
   }
 }
 
-export  { normalizeResponse }
+/**
+ * set ctx.decoded while admin user login
+ * @param {function} fn
+ * @return {function} asnyc
+ */
+const checkAuth = () => async (ctx, next) => {
+  try{
+
+    console.log('1111111111111111111111')
+    let { user_id: id } = await verifyToken(ctx)
+    console.log(id)
+    if(id) {
+      ctx.session = {}
+      ctx.session.id = id
+    }
+  } catch(err) {
+    console.log('err', err)
+  }
+  await next()
+}
+export  { normalizeResponse, checkAuth }
