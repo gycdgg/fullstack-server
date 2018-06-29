@@ -1,9 +1,13 @@
 import sequelize from './models/sequelize'
-import { Picture } from './models'
+import { Picture, User } from './models'
 (async () => {
   try{
+    // drop stchemas and sync table
     await sequelize.dropAllSchemas()
     await Picture.sync({ force: true })
+    await User.sync({ force: true })
+
+    // create mock data
     await Picture.create({
       url: 'this is url test1',
       title: 'test title',
@@ -33,6 +37,15 @@ import { Picture } from './models'
       title: 'test title',
       type: 'test type',
       desc: 'test desc'
+    })
+
+    await User.create({
+      username: 'edguan',
+      password: '123456'
+    })
+    await User.create({
+      username: 'sandy',
+      password: '12345'
     })
   } catch (err) {
     console.log(err)

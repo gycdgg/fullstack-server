@@ -1,5 +1,6 @@
 import Picture from './picture'
-
+import User from './user'
 export {
-  Picture
+  Picture,
+  User
 }
