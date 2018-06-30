@@ -26,6 +26,11 @@ export default sequelize.define('picture', {
     type: Sequelize.STRING,
     allowNull: true,
     unique: false
+  },
+  is_deleted: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   }
 }, {
   tableName: 'Picture'

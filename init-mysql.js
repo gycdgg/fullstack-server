@@ -18,13 +18,15 @@ import { Picture, User } from './models'
       url: 'this is url test1',
       title: 'test title',
       type: 'test type',
-      desc: 'test desc'
+      desc: 'test desc',
+      is_deleted: true
     })
     await Picture.create({
       url: 'this is url test2',
       title: 'test title',
       type: 'test type',
-      desc: 'test desc'
+      desc: 'test desc',
+      is_deleted: false
     })
     await Picture.create({
       url: 'this is url test3',
@@ -45,7 +47,8 @@ import { Picture, User } from './models'
     })
     await User.create({
       username: 'sandy',
-      password: '12345'
+      password: '12345',
+      is_deleted: true
     })
   } catch (err) {
     console.log(err)

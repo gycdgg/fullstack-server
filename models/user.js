@@ -15,6 +15,11 @@ export default sequelize.define('user', {
   password: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  is_deleted: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   }
 }, {
   tableName: 'User'
