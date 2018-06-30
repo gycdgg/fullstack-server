@@ -1,4 +1,5 @@
 import { verifyToken } from '../util'
+import { User } from '../models'
 /**
  * normalize response
  * for admin api, should be authed
@@ -16,7 +17,12 @@ const normalizeResponse = (fn) => async (ctx, next) => {
     }
   }
   try{
-    await fn(ctx, next)
+    let data = await fn(ctx, next)
+    ctx.status = 200
+    ctx.body = {
+      data,
+      message: 'Success'
+    }
   }catch(e) {
     ctx.status = 500
     ctx.body = {
@@ -31,16 +37,18 @@ const normalizeResponse = (fn) => async (ctx, next) => {
  * set ctx.decoded while admin user login
  * @param {function} fn
  * @return {function} asnyc
+ * make sure the id exists and the used has not been deleted
  */
 const checkAuth = () => async (ctx, next) => {
   try{
-
-    console.log('1111111111111111111111')
     let { user_id: id } = await verifyToken(ctx)
-    console.log(id)
-    if(id) {
-      ctx.session = {}
-      ctx.session.id = id
+    if (id) {
+      let userInfo = await User.findById(id)
+      if(userInfo) {
+        ctx.session = {}
+        ctx.session.id = id
+
+      }
     }
   } catch(err) {
     console.log('err', err)

@@ -6,11 +6,17 @@ import { normalizeResponse } from '../middleware'
 import userController from '../controller/user'
 const router = Router()
 
-router.post('/login', userController.post)
 /**
  * check login status and get user info
+ * get: check session
+ * post: admin user login
+ * put: update admin user
+ * delete: log out
  */
 router.get('/session', normalizeResponse(userController._get))
+router.post('/session', userController.post)
+router.put('/session', normalizeResponse(userController.put))
+router.delete('/session', normalizeResponse(userController._delete))
 
 router.post('/imgs', multiparty(), async (ctx) => {
   try{

@@ -3,11 +3,7 @@ import { signToken } from '../util'
 
 class UserController {
   async _get(ctx) {
-    const userInfo = await User.findById(ctx.session.id)
-    ctx.body = {
-      message: 'Success',
-      data: userInfo
-    }
+    return User.findById(ctx.session.id)
   }
 
   async post(ctx) {
@@ -15,7 +11,7 @@ class UserController {
     console.log(username, password, ctx.request)
     const user = await User.findOne({
       where: {
-        username, password
+        username, password, is_deleted: false
       }
     })
     // if user found, sign token and set cookie to browser
@@ -40,6 +36,22 @@ class UserController {
     }catch(err) {
       console.log('err', err)
     }
+  }
+
+  async put(ctx) {
+    const { password } = ctx.request.body
+    return User.update({ password: password }, {
+      where: {
+        id: ctx.session.id
+      }
+    })
+  }
+
+  async _delete(ctx) {
+    return await User.update({ is_deleted: true },
+      {    where: {
+        id: ctx.session.id
+      } })
   }
 }
 
