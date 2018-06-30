@@ -1,5 +1,5 @@
-import { verifyToken } from '../util'
 import { User } from '../models'
+import { verifyToken } from '../util'
 /**
  * normalize response
  * for admin api, should be authed
@@ -14,6 +14,7 @@ const normalizeResponse = (fn) => async (ctx, next) => {
         name: 'unauthortized',
         message: 'user or client unauthortized'
       }
+      return
     }
   }
   try{
@@ -41,7 +42,8 @@ const normalizeResponse = (fn) => async (ctx, next) => {
  */
 const checkAuth = () => async (ctx, next) => {
   try{
-    let { user_id: id } = await verifyToken(ctx)
+    const token = await verifyToken(ctx)
+    let id = token && token.user_id
     if (id) {
       let userInfo = await User.findById(id)
       if(userInfo) {

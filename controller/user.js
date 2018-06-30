@@ -8,7 +8,6 @@ class UserController {
 
   async post(ctx) {
     const { userName: username, password } = ctx.request.body
-    console.log(username, password, ctx.request)
     const user = await User.findOne({
       where: {
         username, password, is_deleted: false
@@ -48,10 +47,11 @@ class UserController {
   }
 
   async _delete(ctx) {
-    return await User.update({ is_deleted: true },
-      {    where: {
-        id: ctx.session.id
-      } })
+    let data =  await User.findById(ctx.session.id)
+    if(data) {
+      ctx.cookies.set('user_id', '') 
+    }
+    return data
   }
 }
 
