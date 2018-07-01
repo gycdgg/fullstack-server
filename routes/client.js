@@ -1,5 +1,4 @@
 import Router from 'koa-router'
-import { normalizeResponse } from '../middleware/index'
 import home from '../controller/home'
 const router = Router()
 

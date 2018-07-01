@@ -20,7 +20,6 @@ router.delete('/session', normalizeResponse(userController._delete))
 
 router.post('/imgs', multiparty(), async (ctx) => {
   try{
-
     let filename = ctx.req.files.file.originalFilename || path.basename(ctx.req.files.file.path)
     let targetPath = `./static/uploads/${filename}`
     await fs.createReadStream(ctx.req.files.file.path).pipe(fs.createWriteStream(targetPath))
