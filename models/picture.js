@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize'
-import sequelize from './sequelize.js'
+import sequelize from './Sequelize.js'
 
 export default sequelize.define('picture', {
   id: {
