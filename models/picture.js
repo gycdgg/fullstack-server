@@ -22,10 +22,17 @@ export default sequelize.define('picture', {
     allowNull: true,
     unique: false
   },
-  type: {
+  category: {
     type: Sequelize.STRING,
     allowNull: true,
     unique: false
+  },
+  status: {
+    type: Sequelize.STRING,
+    defaultValue: 'done'
+  },
+  name: {
+    type: Sequelize.STRING
   },
   is_deleted: {
     type: Sequelize.BOOLEAN,

@@ -4,6 +4,7 @@ import path from 'path'
 import fs from 'fs'
 import { normalizeResponse } from '../middleware'
 import userController from '../controller/user'
+import pictureController from '../controller/picture'
 const router = Router()
 
 /**
@@ -18,7 +19,10 @@ router.post('/session', userController.post)
 router.put('/session', normalizeResponse(userController.put))
 router.delete('/session', normalizeResponse(userController._delete))
 
-router.post('/imgs', multiparty(), async (ctx) => {
+//client get pictures
+router.get('/pictures', pictureController._get)
+//router.post('/imgs', async ())
+router.post('/upload', multiparty(), async (ctx) => {
   try{
     let filename = ctx.req.files.file.originalFilename || path.basename(ctx.req.files.file.path)
     let targetPath = `./static/uploads/${filename}`

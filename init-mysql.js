@@ -11,33 +11,33 @@ import { Picture, User } from './models'
     await Picture.create({
       url: 'this is url test1',
       title: 'test title',
-      type: 'test type',
+      category: 'banner',
       desc: 'test desc'
     })
     await Picture.create({
       url: 'this is url test1',
       title: 'test title',
       type: 'test type',
-      desc: 'test desc',
+      category: 'banner',
       is_deleted: true
     })
     await Picture.create({
       url: 'this is url test2',
       title: 'test title',
       type: 'test type',
-      desc: 'test desc',
+      category: 'app',
       is_deleted: false
     })
     await Picture.create({
       url: 'this is url test3',
       title: 'test title',
-      type: 'test type',
-      desc: 'test desc'
+      category: 'app',
+      desc: 'app'
     })
     await Picture.create({
       url: 'this is url test4',
       title: 'test title',
-      type: 'test type',
+      category: 'product',
       desc: 'test desc'
     })
 
