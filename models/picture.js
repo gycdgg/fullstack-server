@@ -41,6 +41,9 @@ export default sequelize.define('picture', {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
+  },
+  uid: {
+    type: Sequelize.STRING
   }
 }, {
   tableName: 'Picture'
