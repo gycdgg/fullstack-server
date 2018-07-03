@@ -15,12 +15,13 @@ const router = Router()
  * delete: log out
  */
 router.get('/session', normalizeResponse(userController._get))
-router.post('/session', userController.post)
-router.put('/session', normalizeResponse(userController.put))
+router.post('/session', userController.create)
+router.put('/session', normalizeResponse(userController.update))
 router.delete('/session', normalizeResponse(userController._delete))
 
-//client get pictures
+//client or admin get pictures
 router.get('/pictures', pictureController._get)
+router.post('/pictures', normalizeResponse(pictureController.create))
 //router.post('/imgs', async ())
 router.post('/upload', multiparty(), async (ctx) => {
   try{

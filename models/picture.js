@@ -22,6 +22,9 @@ export default sequelize.define('picture', {
     allowNull: true,
     unique: false
   },
+  type: {
+    type: Sequelize.STRING
+  },
   category: {
     type: Sequelize.STRING,
     allowNull: true,

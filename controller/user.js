@@ -6,7 +6,7 @@ class UserController {
     return User.findById(ctx.session.id)
   }
 
-  async post(ctx) {
+  async create(ctx) {
     const { userName: username, password } = ctx.request.body
     const user = await User.findOne({
       where: {
@@ -37,7 +37,7 @@ class UserController {
     }
   }
 
-  async put(ctx) {
+  async update(ctx) {
     const { password } = ctx.request.body
     return User.update({ password: password }, {
       where: {
