@@ -23,6 +23,9 @@ router.delete('/session', normalizeResponse(userController._delete))
 router.get('/pictures', pictureController._get)
 router.post('/pictures', normalizeResponse(pictureController.create))
 //router.post('/imgs', async ())
+/**
+ * @todo name is configable
+ */
 router.post('/upload', multiparty(), async (ctx) => {
   try{
     let filename = ctx.req.files.file.originalFilename || path.basename(ctx.req.files.file.path)

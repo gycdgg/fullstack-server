@@ -4,7 +4,7 @@ class PictureController {
   
   async _get(ctx) {
     const { category } = ctx.query
-    let pictures = await Picture.findAll({
+    let pictures = await Picture.findAndCount({
       where: { category }
     })
     ctx.status = 200
@@ -14,8 +14,18 @@ class PictureController {
     }
   }
 
+  /**
+   *
+   * delete and the create
+   * @param {*} ctx
+   * @returns data
+   * @memberof PictureController
+   */
   async create(ctx) {
-    const fileList = ctx.request.body
+    const { fileList, category } = ctx.request.body
+    await Picture.destroy({
+      where: { category }
+    })
     return Picture.bulkCreate(fileList)
   }
 }
