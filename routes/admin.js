@@ -22,6 +22,7 @@ router.delete('/session', normalizeResponse(userController._delete))
 //client or admin get pictures
 router.get('/pictures', pictureController._get)
 router.post('/pictures', normalizeResponse(pictureController.create))
+router.put('/pictures', normalizeResponse(pictureController.update))
 //router.post('/imgs', async ())
 /**
  * @todo name is configable
