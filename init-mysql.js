@@ -9,38 +9,55 @@ import { Picture, User } from './models'
 
     // create mock data
     await Picture.create({
-      url: 'this is url test1',
-      title: 'test title',
-      category: 'banner',
-      desc: 'test desc'
-    })
-    await Picture.create({
-      url: 'this is url test1',
-      title: 'test title',
-      type: 'test type',
-      category: 'banner',
-      is_deleted: true
-    })
-    await Picture.create({
-      url: 'this is url test2',
-      title: 'test title',
-      type: 'test type',
-      category: 'app',
-      is_deleted: false
-    })
-    await Picture.create({
-      url: 'this is url test3',
-      title: 'test title',
-      category: 'app',
-      desc: 'app'
-    })
-    await Picture.create({
-      url: 'this is url test4',
-      title: 'test title',
-      category: 'product',
-      desc: 'test desc'
+      name: '22490202.jpg',
+      uid: '1111',
+      category: 'home_banner',
+      url: 'http://localhost:9090/static/uploads/22490202.jpg'
     })
 
+    await Picture.create({
+      name: '22490202.jpg',
+      category: 'home_banner',
+      uid: '2222',
+      url: 'http://localhost:9090/static/uploads/22490202.jpg'
+    })
+    await Picture.create({
+      name: 'logo.jpg',
+      category: 'home_banner',
+      uid: '3333',
+      url: 'http://localhost:9090/static/uploads/logo.jpg'
+    })
+    await Picture.create({
+      name: '22490202.jpg',
+      uid: '44444',
+      category: 'home_banner',
+      url: 'http://localhost:9090/static/uploads/22490202.jpg'
+    })
+    await Picture.create({
+      name: 'logo.jpg',
+      uid: '5555',
+      category: 'home_banner',
+      url: 'http://localhost:9090/static/uploads/logo.jpg'
+    })
+    await Picture.create({
+      name: '22490202.jpg',
+      title: 'product1',
+      category: 'home_product',
+      url: 'http://localhost:9090/static/uploads/22490202.jpg'
+    })
+    await Picture.create({
+      name: 'logo.jpg',
+      title: 'product2',
+      category: 'home_product',
+      url: 'http://localhost:9090/static/uploads/logo.jpg'
+    })
+
+    await Picture.create({
+      name: 'logo.jpg',
+      title: 'app1',
+      category: 'home_app',
+      url: 'http://localhost:9090/static/uploads/logo.jpg'
+    })
     await User.create({
       username: 'edguan',
       password: '123456'
