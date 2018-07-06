@@ -5,6 +5,7 @@ import fs from 'fs'
 import { normalizeResponse } from '../middleware'
 import userController from '../controller/user'
 import pictureController from '../controller/picture'
+import productController from '../controller/product'
 const router = Router()
 
 /**
@@ -19,11 +20,13 @@ router.post('/session', userController.create)
 router.put('/session', normalizeResponse(userController.update))
 router.delete('/session', normalizeResponse(userController._delete))
 
-//client or admin get pictures
 router.get('/pictures', pictureController._get)
 router.post('/pictures', normalizeResponse(pictureController.create))
 router.put('/pictures', normalizeResponse(pictureController.update))
-//router.post('/imgs', async ())
+
+
+router.get('/products/:id?', productController._get)
+router.post('/products', productController.create)
 /**
  * @todo name is configable
  */
