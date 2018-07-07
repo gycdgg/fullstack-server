@@ -17,5 +17,5 @@ export default sequelize.define('home', {
     allowNull: false
   }
 }, {
-  tableName: 'Home'
+  tableName: 'home'
 })

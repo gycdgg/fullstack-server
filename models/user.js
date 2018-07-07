@@ -22,5 +22,5 @@ export default sequelize.define('user', {
     defaultValue: false
   }
 }, {
-  tableName: 'User'
+  tableName: 'user'
 })

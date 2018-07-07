@@ -46,5 +46,5 @@ export default sequelize.define('picture', {
     type: Sequelize.STRING
   }
 }, {
-  tableName: 'Picture'
+  tableName: 'picture'
 })

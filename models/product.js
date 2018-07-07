@@ -23,5 +23,5 @@ export default sequelize.define('product', {
     defaultValue: false
   }
 }, {
-  tableName: 'Product'
+  tableName: 'product'
 })

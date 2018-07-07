@@ -19,5 +19,5 @@ export default sequelize.define('feature', {
   },
 
 }, {
-  tableName: 'Feature'
+  tableName: 'feature'
 })

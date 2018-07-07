@@ -19,5 +19,5 @@ export default sequelize.define('application', {
   },
 
 }, {
-  tableName: 'Application'
+  tableName: 'application'
 })
