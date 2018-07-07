@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import sequelize from './Sequelize.js'
 
-export default sequelize.define('application', {
+export default sequelize.define('package', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -19,5 +19,5 @@ export default sequelize.define('application', {
   },
 
 }, {
-  tableName: 'Application'
+  tableName: 'Package'
 })
