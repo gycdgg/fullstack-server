@@ -1,15 +1,17 @@
 import sequelize from './models/sequelize'
-import { Picture, User, Product, Feature } from './models'
+import { Picture, User, Product, Feature, Application, Package } from './models'
 
 (async () => {
   try{
     //drop stchemas and sync table
-    await sequelize.query('DROP TABLE `edmond`.`feature`, `edmond`.`picture`, `edmond`.`product`, `edmond`.`user`')
-    sequelize.sync({ force: true })
+    //await sequelize.query('DROP TABLE `test1`.`feature`, `test1`.`picture`, `test1`.`product`, `test1`.`user`, `test1`.`application`, `test1`.`package`')
+
     await Picture.sync({ force: true })
     await User.sync({ force: true })
     await Product.sync({ force: true })
     await Feature.sync({ force: true })
+    await Application.sync({ force: true })
+    await Package.sync({ force: true })
     // create mock data
     await Picture.create({
       name: '22490202.jpg',
@@ -104,6 +106,30 @@ import { Picture, User, Product, Feature } from './models'
     })
     await Feature.create({
       name: 'this is a fature5',
+      productId: 2
+    })
+    await Application.create({
+      name: 'this is a Application1',
+      productId: 1
+    })
+    await Application.create({
+      name: 'this is a Application2',
+      productId: 1
+    })
+    await Application.create({
+      name: 'this is a Application3',
+      productId: 2
+    })
+    await Package.create({
+      name: 'this is a package1',
+      productId: 1
+    })
+    await Package.create({
+      name: 'this is a package2',
+      productId: 1
+    })
+    await Package.create({
+      name: 'this is a package3',
       productId: 2
     })
     console.log('sync mysql success')

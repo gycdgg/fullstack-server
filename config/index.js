@@ -1,8 +1,8 @@
 const databaseInfo = {
-  databaseName: 'edmond',
+  databaseName: 'test1',
   username: 'root',
-  password: 'root',
-  host: 'localhost',
+  password: 'test123',
+  host: '47.93.20.87',
   dialect: 'mysql',
   port: 3306,
   underscored: true,
