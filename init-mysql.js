@@ -1,4 +1,4 @@
-import sequelize from './models/sequelize'
+//import sequelize from './models/sequelize'
 import { Picture, User, Product, Feature, Application, Package } from './models'
 
 (async () => {
