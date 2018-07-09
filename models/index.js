@@ -24,5 +24,6 @@ export {
   Feature,
   Application,
   Package,
+  Workshop,
   Product
 }

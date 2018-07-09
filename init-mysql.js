@@ -1,5 +1,5 @@
 //import sequelize from './models/sequelize'
-import { Picture, User, Product, Feature, Application, Package } from './models'
+import { Picture, User, Product, Feature, Application, Package, Workshop } from './models'
 
 (async () => {
   try{
@@ -130,6 +130,18 @@ import { Picture, User, Product, Feature, Application, Package } from './models'
     })
     await Package.create({
       name: 'this is a package3',
+      productId: 2
+    })
+    await Workshop.create({
+      name: 'this is a workshop1',
+      productId: 1
+    })
+    await Workshop.create({
+      name: 'this is a workshop22',
+      productId: 1
+    })
+    await Workshop.create({
+      name: 'this is a workshop3',
       productId: 2
     })
     console.log('sync mysql success')
