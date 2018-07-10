@@ -12,6 +12,7 @@ import { Picture, User, Product, Feature, Application, Package, Workshop } from 
     await Feature.sync({ force: true })
     await Application.sync({ force: true })
     await Package.sync({ force: true })
+    await Workshop.sync({ force: true })
     // create mock data
     await Picture.create({
       name: '22490202.jpg',

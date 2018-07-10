@@ -8,7 +8,7 @@ export default sequelize.define('product', {
     autoIncrement: true,
   },
   summary: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true,
     unique: false
   },
