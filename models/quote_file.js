@@ -21,6 +21,9 @@ export default sequelize.define('quota_file', {
     allowNull: false,
     defaultValue: false
   },
+  url: {
+    type: Sequelize.STRING
+  },
   uid: {
     type: Sequelize.STRING
   }

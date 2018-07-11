@@ -6,6 +6,8 @@ import { normalizeResponse } from '../middleware'
 import userController from '../controller/user'
 import pictureController from '../controller/picture'
 import productController from '../controller/product'
+import quoteController from '../controller/quote'
+
 const router = Router()
 
 /**
@@ -24,6 +26,8 @@ router.get('/pictures', pictureController._get)
 router.post('/pictures', normalizeResponse(pictureController.create))
 router.put('/pictures', normalizeResponse(pictureController.update))
 
+
+router.get('/quote', normalizeResponse(quoteController._get))
 
 router.get('/products/:id?', normalizeResponse(productController._get, true))
 router.post('/products', productController.create)
