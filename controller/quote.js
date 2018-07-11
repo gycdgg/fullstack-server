@@ -5,9 +5,9 @@ class QuoteController {
   async _get() {
     return Quote.findAndCountAll({
       where: { is_deleted: false },
-      attributes: { exclude: [ 'createdAt', 'updatedAt' ] },
+      attributes: { exclude: [ 'updatedAt' ] },
       include: [
-        { model: Quote_file, as: 'file', where: { is_deleted: false }, attributes: [ 'name', 'url', 'uid' ] },
+        { model: Quote_file, as: 'files', where: { is_deleted: false, status: 'done' }, attributes: [ 'name', 'url', 'uid' ] },
       ]
     })
   }

@@ -29,11 +29,6 @@ class ProductController {
       })
     }
   }
-
-  async create(ctx) {
-    // 
-    return 1
-  }
 }
 
 export default new ProductController
