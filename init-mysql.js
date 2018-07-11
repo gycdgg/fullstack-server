@@ -1,5 +1,5 @@
 //import sequelize from './models/sequelize'
-import { Picture, User, Product, Feature, Application, Package, Workshop } from './models'
+import { Picture, User, Product, Feature, Application, Package, Workshop, Quote, Quote_file } from './models'
 
 (async () => {
   try{
@@ -13,6 +13,8 @@ import { Picture, User, Product, Feature, Application, Package, Workshop } from 
     await Application.sync({ force: true })
     await Package.sync({ force: true })
     await Workshop.sync({ force: true })
+    await Quote.sync({ force: true })
+    await Quote_file.sync({ force: true })
     // create mock data
     await Picture.create({
       name: '22490202.jpg',

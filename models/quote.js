@@ -1,26 +1,34 @@
 import Sequelize from 'sequelize'
 import sequelize from './Sequelize.js'
 
-export default sequelize.define('workshop', {
+export default sequelize.define('quote', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
+  first_name: {
     type: Sequelize.STRING,
     allowNull: true,
     unique: false
   },
-  url: {
-    type: Sequelize.STRING,
-    allowNull: true,
-    unique: false
+  last_name: {
+    type: Sequelize.STRING
   },
-  uid: {
-    type: Sequelize.STRING,
-    allowNull: true,
-    unique: false
+  email: {
+    type: Sequelize.STRING
+  },
+  company: {
+    type: Sequelize.STRING
+  },
+  country: {
+    type: Sequelize.STRING
+  },
+  phone: {
+    type: Sequelize.STRING
+  },
+  product_detail: {
+    type: Sequelize.STRING
   },
   is_deleted: {
     type: Sequelize.BOOLEAN,
@@ -29,5 +37,5 @@ export default sequelize.define('workshop', {
   },
 
 }, {
-  tableName: 'workshop'
+  tableName: 'quote'
 })
