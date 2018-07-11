@@ -30,7 +30,7 @@ router.put('/pictures', normalizeResponse(pictureController.update))
 router.get('/quote', normalizeResponse(quoteController._get))
 
 router.get('/products/:id?', normalizeResponse(productController._get, true))
-router.post('/products', productController.create)
+//router.post('/products', productController.create)
 /**
  * @todo name is configable
  */
