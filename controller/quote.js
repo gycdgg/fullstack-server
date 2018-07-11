@@ -1,5 +1,5 @@
 import { Quote, Quote_file } from '../models'
-import orm from '../models/sequelize'
+import orm from '../models/Sequelize'
 class QuoteController {
   
   async _get() {
