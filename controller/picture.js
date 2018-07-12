@@ -35,7 +35,6 @@ class PictureController {
   
   async update(ctx) {
     const { body } = ctx.request
-    console.log(body)
     return Picture.update({ 
       title: body.title,
       url: body.url,
