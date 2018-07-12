@@ -13,7 +13,7 @@ router.post('/quote', quoteController.create)
 router.post('/upload', multiparty(), async (ctx) => {
   try{
     let filename = ctx.req.files.file.originalFilename || path.basename(ctx.req.files.file.path)
-    let targetPath = `./static/uploads/${filename}`
+    let targetPath = `./static/uploads/client/${filename}`
     await fs.createReadStream(ctx.req.files.file.path).pipe(fs.createWriteStream(targetPath))
     console.log('post img api', ctx.req.files, ctx.headers, ctx.req)
     ctx.body = {
