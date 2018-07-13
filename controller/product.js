@@ -29,6 +29,11 @@ class ProductController {
       })
     }
   }
+
+  async create(ctx) {
+    const { body } = ctx.request
+    return { a: 1 }
+  }
 }
 
 export default new ProductController

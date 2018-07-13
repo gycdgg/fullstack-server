@@ -8,7 +8,7 @@ const router = Router()
 router.get('/home', home._get)
 
 
-router.post('/quote', quoteController.create)
+router.post('/quotes', quoteController.create)
 
 router.post('/upload', multiparty(), async (ctx) => {
   try{
