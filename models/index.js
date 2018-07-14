@@ -9,23 +9,23 @@ import Quote from './quote'
 import Quote_file from './quote_file'
 import Product_pic from './product_pic'
 
-Product.hasMany(Feature, { as: 'features', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
-Feature.belongsTo(Product, { as: 'features', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
+Product.hasMany(Feature, { as: 'features', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
+Feature.belongsTo(Product, { as: 'features', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 
-Product.hasMany(Application, { as: 'applications', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
-Application.belongsTo(Product, { as: 'applications', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
+Product.hasMany(Application, { as: 'applications', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
+Application.belongsTo(Product, { as: 'applications', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 
-Product.hasMany(Package, { as: 'packages', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
-Package.belongsTo(Product, { as: 'packages', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
+Product.hasMany(Package, { as: 'packages', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
+Package.belongsTo(Product, { as: 'packages', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 
-Product.hasMany(Workshop, { as: 'workshops', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
-Workshop.belongsTo(Product, { as: 'workshops', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
+Product.hasMany(Workshop, { as: 'workshops', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
+Workshop.belongsTo(Product, { as: 'workshops', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 
-Product.hasMany(Product_pic, { as: 'product_pics', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
-Product_pic.belongsTo(Product, { as: 'product_pics', foreignKey: 'productId', onDelete: 'cascade', hooks: true })
+Product.hasMany(Product_pic, { as: 'product_pics', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
+Product_pic.belongsTo(Product, { as: 'product_pics', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 
-Quote.hasMany(Quote_file, { as: 'files', foreignKey: 'quoteId', onDelete: 'cascade', hooks: true })
-Quote_file.belongsTo(Quote, { as: 'files', foreignKey: 'quoteId', onDelete: 'cascade', hooks: true })
+Quote.hasMany(Quote_file, { as: 'files', foreignKey: 'quote_id', onDelete: 'cascade', hooks: true })
+Quote_file.belongsTo(Quote, { as: 'files', foreignKey: 'quote_id', onDelete: 'cascade', hooks: true })
 
 
 export {

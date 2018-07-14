@@ -20,7 +20,7 @@ class QuoteController {
         first_name, last_name, email, phone, country, company, product_detail
       }, { transaction: t })
       const _upload = upload.map(v => {
-        v.quoteId = quote.id
+        v.quote_id = quote.id
         return v
       })
       await Quote_file.bulkCreate(_upload, {

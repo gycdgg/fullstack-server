@@ -17,6 +17,9 @@ export default sequelize.define('product_pic', {
     allowNull: true,
     unique: false
   },
+  type: {
+    type: Sequelize.STRING
+  },
   uid: {
     type: Sequelize.STRING,
     allowNull: true,
