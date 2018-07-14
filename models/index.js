@@ -35,6 +35,7 @@ export {
   Application,
   Package,
   Workshop,
+  Product_pic,
   Product,
   Quote_file,
   Quote

@@ -17,6 +17,9 @@ export default sequelize.define('product', {
     allowNull: true,
     unique: false
   },
+  category: {
+    type: Sequelize.STRING
+  },
   is_deleted: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
