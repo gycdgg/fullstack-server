@@ -24,7 +24,7 @@ class QuoteController {
         return v
       })
       await Quote_file.bulkCreate(_upload, {
-        fields: [ 'uid', 'status', 'url',  'quoteId', 'name' ],
+        fields: [ 'uid', 'status', 'url',  'quote_id', 'name' ],
         transaction: t
       })
       await t.commit()
