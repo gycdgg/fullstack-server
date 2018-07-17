@@ -31,6 +31,7 @@ router.get('/quotes', normalizeResponse(quoteController._get))
 
 router.get('/products/:id?', normalizeResponse(productController._get, true))
 router.post('/products', productController.create)
+router.delete('/products/:id', normalizeResponse(productController._delete))
 /**
  * @todo name is configable
  */

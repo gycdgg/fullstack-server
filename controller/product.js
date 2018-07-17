@@ -1,5 +1,6 @@
 import { Product, Feature, Application, Package, Product_pic, Workshop } from '../models'
 import orm from '../models/Sequelize'
+import user from './user'
 
 class ProductController {
   async _get(ctx) {
@@ -82,6 +83,16 @@ class ProductController {
     }
     
     return { a: 1 }
+  }
+
+  async _delete(ctx) {
+    const { id } = ctx.params
+    await Product.update({
+      is_deleted: true
+    }, {
+      where: { id }
+    })
+    return true
   }
 }
 

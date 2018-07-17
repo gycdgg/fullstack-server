@@ -3,11 +3,13 @@ import fs from 'fs'
 import multiparty from 'koa2-multiparty'
 import home from '../controller/home'
 import quoteController from '../controller/quote'
+import { normalizeResponse } from '../middleware'
+import product from '../controller/product'
 const router = Router()
 
 router.get('/home', home._get)
 
-
+router.get('/products', normalizeResponse(product._get))
 router.post('/quotes', quoteController.create)
 
 router.post('/upload', multiparty(), async (ctx) => {
