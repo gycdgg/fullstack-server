@@ -1,9 +1,13 @@
 import { Product, Feature, Application, Package, Product_pic, Workshop } from '../models'
 import orm from '../models/Sequelize'
-import user from './user'
+
 
 class ProductController {
   async _get(ctx) {
+    const { limit, offset, category } = ctx.query
+    const whereClause = {
+      is_deleted: false
+    }
     if(ctx.params.id) {
       return Product.findOne({
         where: {
@@ -20,10 +24,13 @@ class ProductController {
         ]
       })
     } else {
+      if(category) {
+        Object.assign(whereClause, { category })
+      }
       return Product.findAndCount({
-        where: {
-          is_deleted: false
-        },
+        offset: +offset,
+        limit: +limit,
+        where: whereClause,
         attributes: [ 'id', 'name', 'summary', 'category' ],
         include: [
           // { model: Feature, as: 'features', where: { is_deleted: false }, attributes: [ 'name', 'id' ] },
