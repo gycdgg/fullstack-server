@@ -12,7 +12,7 @@ class ProductController {
       return Product.findOne({
         where: {
           is_deleted: false,
-          id: ctx.params.id
+          id: ctx.params.id 
         },
         attributes: [ 'id', 'name', 'summary', 'category' ],
         include: [
@@ -24,6 +24,7 @@ class ProductController {
         ]
       })
     } else {
+      
       if(category) {
         Object.assign(whereClause, { category })
       }

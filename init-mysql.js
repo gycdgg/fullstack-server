@@ -1,5 +1,19 @@
 //import sequelize from './models/sequelize'
 import { Picture, User, Product, Feature, Application, Package, Workshop, Quote, Quote_file, Product_pic } from './models'
+const mockNavi = [
+  [ 'xWDM & OADM', 'CWDM Mux/Demuxs', 'CWDM OADMs', 'DWDM Mux/Demuxs', 'DWDM OADMs', 'AAWG', 'CCWDM Modules', 'LAN WDM' ],
+  [ 'Optical Transceivers', 
+    [ 'SFP Transceivers', '1000BASE SFP', 'Copper SFP', 'BiDi SFP', 'CWDM SFP', 'DWDM SFP' ], 
+    [ 'SFP+ Transceivers', '10G SFP+', 'BiDi SFP+', 'CWDM SFP+', 'DWDM SFP+' ], [ 'XFP Transceivers', '10G XFP', 'BiDi XFP', 'CWDM XFP', 'DWDM XFP' ], 
+    [ '25G/40G/100G Transceivers', '25G SFP28', '40G QSFP+', '100G QSFP28', 'CFP/CFP2/CFP4/CXP' ]
+  ],
+  [ 'Active Optical Cables', '10G SFP+ AOC', '25G SFP28 AOC', '40G QSFP+ AOC', '56G QSFP+  AOC', '100G QSFP28 AOC' ],
+  [ 'Direct Attach Cables', '10G SFP+  DAC', '25G SFP28 DAC', '40G QSFP+  DAC', '56G QSFP+  DAC', '100G QSFP28 DAC' ],
+  [ 'MTP/MPO Fiber Cables', 'MPO Cables', 'MTP Cables', 'MTP/MPO Patch Panel', 'MTP/MPO Cassettes', 'MTP/MPO Loopbacks' ],
+  [	'Fiber Patch Cables',	'Fiber Patch Cord', 'Pre-Terminated Patch Cords',	'Fiber Optic Pigtail', 'Fiber Optic Adapter',	'Fiber Optic Connector',	 'Fast Connector', 'OTDR Launch Cable'	],
+  [ 'Passive Components', 'PLC Splitter', 'FBT Coupler', 'Attenuators', 'Optical Switches', 'WDM Filters' ],
+  [ 'Optical Amplifiers', 'DWDM EDFA', 'Fixed Gain EDFA', 'CATV EDFA', 'Raman Amplifier', 'Dispersion Compensation' ]
+];
 
 (async () => {
   try{
@@ -17,56 +31,6 @@ import { Picture, User, Product, Feature, Application, Package, Workshop, Quote,
     await Quote_file.sync({ force: true })
     await Product_pic.sync({ force: true })
     // create mock data
-    // await Picture.create({
-    //   name: '22490202.jpg',
-    //   uid: '1111',
-    //   category: 'home_banner',
-    //   url: 'http://localhost:9090/static/uploads/22490202.jpg'
-    // })
-
-    // await Picture.create({
-    //   name: '22490202.jpg',
-    //   category: 'home_banner',
-    //   uid: '2222',
-    //   url: 'http://localhost:9090/static/uploads/22490202.jpg'
-    // })
-    // await Picture.create({
-    //   name: 'logo.jpg',
-    //   category: 'home_banner',
-    //   uid: '3333',
-    //   url: 'http://localhost:9090/static/uploads/logo.jpg'
-    // })
-    // await Picture.create({
-    //   name: '22490202.jpg',
-    //   uid: '44444',
-    //   category: 'home_banner',
-    //   url: 'http://localhost:9090/static/uploads/22490202.jpg'
-    // })
-    // await Picture.create({
-    //   name: 'logo.jpg',
-    //   uid: '5555',
-    //   category: 'home_banner',
-    //   url: 'http://localhost:9090/static/uploads/logo.jpg'
-    // })
-    // await Picture.create({
-    //   name: '22490202.jpg',
-    //   title: 'product1',
-    //   category: 'home_product',
-    //   url: 'http://localhost:9090/static/uploads/22490202.jpg'
-    // })
-    // await Picture.create({
-    //   name: 'logo.jpg',
-    //   title: 'product2',
-    //   category: 'home_product',
-    //   url: 'http://localhost:9090/static/uploads/logo.jpg'
-    // })
-
-    // await Picture.create({
-    //   name: 'logo.jpg',
-    //   title: 'app1',
-    //   category: 'home_app',
-    //   url: 'http://localhost:9090/static/uploads/logo.jpg'
-    // })
     await User.create({
       username: 'edguan',
       password: '123456'
@@ -76,78 +40,32 @@ import { Picture, User, Product, Feature, Application, Package, Workshop, Quote,
       password: '12345',
       is_deleted: true
     })
+    mockNavi.forEach(async v => {
+      if(v.some(_v => Array.isArray(_v))) {
+        v.forEach(async (value, index) => {
+          if(index > 0) {
+            for(let i in value) {
+              if(i > 0) {
+                await Product.create({
+                  name: value[i],
+                  category: value[0]
+                })
+              }
+            }
+          }
+        })
+      } else {
+        for(let i in v) {
+          if(i > 0) {
+            await Product.create({
+              category: v[0],
+              name: v[i]
+            })
+          }
+        }
+      }
+    })
 
-    // await Product.create({
-    //   name: 'test product1',
-    //   summary: 'this is a test summary, just a test case11111',
-    //   pdf_name: 'name111',
-    //   pdf_url: 'http://www.baidu.com'
-    // })
-
-    // await Product.create({
-    //   name: 'test product2',
-    //   summary: 'this is a test summary, just a test case2222',
-    //   pdf_name: 'name222',
-    //   pdf_url: 'http://www.baidu.com'
-    // })
-
-    // await Feature.create({
-    //   name: 'this is a fature1',
-    //   user: 1
-    // })
-
-    // await Feature.create({
-    //   name: 'this is a fature2',
-    //   user: 1
-    // })
-    // await Feature.create({
-    //   name: 'this is a fature3',
-    //   user: 1
-    // })
-    // await Feature.create({
-    //   name: 'this is a fature4',
-    //   user: 1
-    // })
-    // await Feature.create({
-    //   name: 'this is a fature5',
-    //   user: 2
-    // })
-    // await Application.create({
-    //   name: 'this is a Application1',
-    //   user: 1
-    // })
-    // await Application.create({
-    //   name: 'this is a Application2',
-    //   user: 1
-    // })
-    // await Application.create({
-    //   name: 'this is a Application3',
-    //   user: 2
-    // })
-    // await Package.create({
-    //   name: 'this is a package1',
-    //   user: 1
-    // })
-    // await Package.create({
-    //   name: 'this is a package2',
-    //   user: 1
-    // })
-    // await Package.create({
-    //   name: 'this is a package3',
-    //   user: 2
-    // })
-    // await Workshop.create({
-    //   name: 'this is a workshop1',
-    //   productId: 1
-    // })
-    // await Workshop.create({
-    //   name: 'this is a workshop22',
-    //   productId: 1
-    // })
-    // await Workshop.create({
-    //   name: 'this is a workshop3',
-    //   productId: 2
-    // })
     console.log('sync mysql success')
   } catch (err) {
     console.log(err)
