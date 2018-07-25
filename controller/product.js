@@ -4,7 +4,7 @@ import orm from '../models/Sequelize'
 
 class ProductController {
   async _get(ctx) {
-    const { limit, offset, category } = ctx.query
+    let { limit, offset, category } = ctx.query
     const whereClause = {
       is_deleted: false
     }
@@ -26,6 +26,10 @@ class ProductController {
     } else {
       
       if(category) {
+        console.log(category, 'category')
+        if(category === 'Optical Transceivers') {
+          category = { $in: [ 'SFP Transceivers', 'SFP+ Transceivers', 'XFP Transceivers', '25G/40G/100G Transceivers' ] }
+        }
         Object.assign(whereClause, { category })
       }
       return Product.findAndCount({
