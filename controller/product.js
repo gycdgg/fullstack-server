@@ -1,6 +1,13 @@
 import { Product, Feature, Application, Package, Product_pic, Workshop } from '../models'
 import orm from '../models/Sequelize'
 
+const modelArr = [
+  { model: Feature, as: 'features', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
+  { model: Application, as: 'applications', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
+  { model: Package, as: 'packages', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
+  { model: Product_pic, as: 'product_pics', where: { is_deleted: false }, attributes: [ 'id', 'name', 'url' ] },                  
+  { model: Workshop, as: 'workshops', where: { is_deleted: false }, attributes: [ 'id', 'name', 'url' ] },
+]
 
 class ProductController {
   async _get(ctx) {
@@ -9,19 +16,13 @@ class ProductController {
       is_deleted: false
     }
     if(ctx.params.id) {
-      return Product.findOne({
+      return Product.findOne({ 
         where: {
           is_deleted: false,
           id: ctx.params.id 
         },
         attributes: [ 'id', 'name', 'summary', 'category' ],
-        include: [
-          { model: Feature, as: 'features', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
-          { model: Application, as: 'applications', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
-          { model: Package, as: 'packages', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
-          { model: Product_pic, as: 'product_pics', where: { is_deleted: false }, attributes: [ 'id', 'name', 'url' ] },                  
-          { model: Workshop, as: 'workshops', where: { is_deleted: false }, attributes: [ 'id', 'name', 'url' ] },
-        ]
+        include: modelArr
       })
     } else {
       
@@ -32,19 +33,20 @@ class ProductController {
         }
         Object.assign(whereClause, { category })
       }
-      return Product.findAndCount({
-        offset: +offset,
-        limit: +limit,
-        where: whereClause,
-        attributes: [ 'id', 'name', 'summary', 'category' ],
-        include: [
-          // { model: Feature, as: 'features', where: { is_deleted: false }, attributes: [ 'name', 'id' ] },
-          // { model: Application, as: 'applications', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
-          // { model: Package, as: 'packages', where: { is_deleted: false }, attributes: [ 'id', 'name' ] },
-          // { model: Product_pic, as: 'product_pics', where: { is_deleted: false }, attributes: [ 'id', 'name', 'type', 'url' ] },           
-          // { model: Workshop, as: 'workshops', where: { is_deleted: false }, attributes: [ 'id', 'name', 'url' ] },
-        ]
-      })
+      if(limit || offset) {
+        return Product.findAndCount({
+          offset: +offset,
+          limit: +limit,
+          where: whereClause,
+          attributes: [ 'id', 'name', 'summary', 'category' ]
+        })
+      } else {
+        return Product.findAndCount({
+          where: whereClause,
+          attributes: [ 'id', 'name', 'summary', 'category' ]
+        })
+      }
+      
     }
   }
 
