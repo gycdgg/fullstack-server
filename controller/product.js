@@ -60,12 +60,12 @@ class ProductController {
       return
     }
     const { body } = ctx.request
-    const { features, applications, packages, workshop_pic, product_pic, product_pdf } = body
+    let { features, applications, packages, workshop_pic, product_pic, product_pdf } = body
     const t = await orm.transaction()
     const localTransaction = { transaction: t }
     try{
       const product = await Product.create(body, {
-        fields: [ 'name', 'category', 'summary' ],
+        fields: [ 'name', 'category', 'summary', 'category_id', 'subcategory_id' ],
         transaction: t
       })
       const productId = product.id

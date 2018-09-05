@@ -32,6 +32,12 @@ Quote_file.belongsTo(Quote, { as: 'files', foreignKey: 'quote_id', onDelete: 'ca
 Category.hasMany(Subcategory, { as: 'subcategorys', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
 Subcategory.belongsTo(Category, { as: 'subcategorys', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
 
+Category.hasMany(Product, { as: '_products', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
+Product.belongsTo(Category, { as: '_products', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
+
+Subcategory.hasMany(Product, { as: 'products', foreignKey: 'subcategory_id', onDelete: 'cascade', hooks: true })
+Product.belongsTo(Subcategory, { as: 'products', foreignKey: 'subcategory_id', onDelete: 'cascade', hooks: true })
+
 export {
   Picture,
   User,

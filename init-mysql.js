@@ -20,6 +20,8 @@ const mockCate = {
 
     await Picture.sync({ force: true })
     await User.sync({ force: true })
+    await Category.sync({ force: true })
+    await Subcategory.sync({ force: true })
     await Product.sync({ force: true })
     await Feature.sync({ force: true })
     await Application.sync({ force: true })
@@ -28,8 +30,6 @@ const mockCate = {
     await Quote.sync({ force: true })
     await Quote_file.sync({ force: true })
     await Product_pic.sync({ force: true })
-    await Category.sync({ force: true })
-    await Subcategory.sync({ force: true })
 
     // create mock data
     await User.create({
