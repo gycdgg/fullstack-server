@@ -8,6 +8,8 @@ import Workshop from './workshop'
 import Quote from './quote'
 import Quote_file from './quote_file'
 import Product_pic from './product_pic'
+import Category from './category'
+import Subcategory from './subcategory'
 
 Product.hasMany(Feature, { as: 'features', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
 Feature.belongsTo(Product, { as: 'features', foreignKey: 'product_id', onDelete: 'cascade', hooks: true })
@@ -27,6 +29,8 @@ Product_pic.belongsTo(Product, { as: 'product_pics', foreignKey: 'product_id', o
 Quote.hasMany(Quote_file, { as: 'files', foreignKey: 'quote_id', onDelete: 'cascade', hooks: true })
 Quote_file.belongsTo(Quote, { as: 'files', foreignKey: 'quote_id', onDelete: 'cascade', hooks: true })
 
+Category.hasMany(Subcategory, { as: 'subcategorys', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
+Subcategory.belongsTo(Category, { as: 'subcategorys', foreignKey: 'category_id', onDelete: 'cascade', hooks: true })
 
 export {
   Picture,
@@ -38,5 +42,7 @@ export {
   Product_pic,
   Product,
   Quote_file,
-  Quote
+  Quote,
+  Category,
+  Subcategory
 }
